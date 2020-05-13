@@ -799,6 +799,8 @@ static void ap_sta_disassoc_cb_timeout(void *eloop_ctx, void *timeout_ctx)
 void ap_sta_disassociate(struct hostapd_data *hapd, struct sta_info *sta,
 			 u16 reason)
 {
+	wpa_msg(hapd->msg_ctx, MSG_INFO, "%s: disassociate STA, reason:%u " MACSTR,
+                   hapd->conf->iface, MAC2STR(sta->addr), reason);
 	wpa_printf(MSG_DEBUG, "%s: disassociate STA " MACSTR,
 		   hapd->conf->iface, MAC2STR(sta->addr));
 	sta->last_seq_ctrl = WLAN_INVALID_MGMT_SEQ;
