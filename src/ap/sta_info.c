@@ -1290,7 +1290,7 @@ void ap_sta_set_authorized(struct hostapd_data *hapd, struct sta_info *sta,
 		if (hapd->msg_ctx_parent &&
 		    hapd->msg_ctx_parent != hapd->msg_ctx)
 			wpa_msg_no_global(hapd->msg_ctx_parent, MSG_INFO,
-					  AP_STA_DISCONNECTED "%s", buf);
+					  AP_STA_DISCONNECTED "233test%s", buf);
 	}
 
 #ifdef CONFIG_FST
