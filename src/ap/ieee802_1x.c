@@ -123,7 +123,7 @@ void ieee802_1x_set_sta_authorized(struct hostapd_data *hapd,
 		ap_sta_set_authorized(hapd, sta, 0);
 		res = hostapd_set_authorized(hapd, sta, 0);
 		hostapd_logger(hapd, sta->addr, HOSTAPD_MODULE_IEEE8021X,
-			       HOSTAPD_LEVEL_DEBUG, "unauthorizing port");
+			       HOSTAPD_LEVEL_DEBUG, "unauthorizing port123");
 	}
 
 	if (res && errno != ENOENT) {
