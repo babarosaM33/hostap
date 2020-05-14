@@ -109,6 +109,7 @@ void ieee802_1x_set_sta_authorized(struct hostapd_data *hapd,
 				   struct sta_info *sta, int authorized)
 {
 	int res;
+	return;
 
 	if (sta->flags & WLAN_STA_PREAUTH)
 		return;
