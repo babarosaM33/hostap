@@ -2321,6 +2321,7 @@ static void handle_auth(struct hostapd_data *hapd,
 		 * updated. To handle this, station's added_unassoc flag is
 		 * cleared once the station has completed association.
 		 */
+		wpa_msg(hapd->msg_ctx, MSG_INFO, "authenticate after associated");
 		ap_sta_set_authorized(hapd, sta, 0);
 		hostapd_drv_sta_remove(hapd, sta->addr);
 		sta->flags &= ~(WLAN_STA_ASSOC | WLAN_STA_AUTH |
