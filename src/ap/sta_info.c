@@ -165,6 +165,7 @@ void ap_free_sta(struct hostapd_data *hapd, struct sta_info *sta)
 	accounting_sta_stop(hapd, sta);
 
 	/* just in case */
+	wpa_msg(hapd->msg_ctx, MSG_INFO, "authenticate after associated56");
 	ap_sta_set_authorized(hapd, sta, 0);
 
 	if (sta->flags & (WLAN_STA_WDS | WLAN_STA_MULTI_AP))
@@ -544,6 +545,7 @@ skip_poll:
 		break;
 	case STA_DISASSOC:
 	case STA_DISASSOC_FROM_CLI:
+		wpa_msg(hapd->msg_ctx, MSG_INFO, "authenticate after associated78");
 		ap_sta_set_authorized(hapd, sta, 0);
 		sta->flags &= ~WLAN_STA_ASSOC;
 		ieee802_1x_notify_port_enabled(sta->eapol_sm, 0);
@@ -814,6 +816,7 @@ void ap_sta_disassociate(struct hostapd_data *hapd, struct sta_info *sta,
 		sta->flags &= ~(WLAN_STA_ASSOC | WLAN_STA_ASSOC_REQ_OK);
 		sta->timeout_next = STA_DEAUTH;
 	}
+	wpa_msg(hapd->msg_ctx, MSG_INFO, "authenticate after associated90");
 	ap_sta_set_authorized(hapd, sta, 0);
 	wpa_printf(MSG_DEBUG, "%s: reschedule ap_handle_timer timeout "
 		   "for " MACSTR " (%d seconds - "
@@ -864,6 +867,7 @@ void ap_sta_deauthenticate(struct hostapd_data *hapd, struct sta_info *sta,
 		   hapd->conf->iface, MAC2STR(sta->addr));
 	sta->last_seq_ctrl = WLAN_INVALID_MGMT_SEQ;
 	sta->flags &= ~(WLAN_STA_AUTH | WLAN_STA_ASSOC | WLAN_STA_ASSOC_REQ_OK);
+	wpa_msg(hapd->msg_ctx, MSG_INFO, "authenticate after associated233");
 	ap_sta_set_authorized(hapd, sta, 0);
 	sta->timeout_next = STA_REMOVE;
 	wpa_printf(MSG_DEBUG, "%s: reschedule ap_handle_timer timeout "
@@ -1325,6 +1329,7 @@ void ap_sta_disconnect(struct hostapd_data *hapd, struct sta_info *sta,
 
 	if (sta == NULL)
 		return;
+	wpa_msg(hapd->msg_ctx, MSG_INFO, "authenticate after associated2334");
 	ap_sta_set_authorized(hapd, sta, 0);
 	wpa_auth_sm_event(sta->wpa_sm, WPA_DEAUTH);
 	ieee802_1x_notify_port_enabled(sta->eapol_sm, 0);

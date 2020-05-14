@@ -4285,7 +4285,7 @@ static void handle_disassoc(struct hostapd_data *hapd,
 			   MAC2STR(mgmt->sa));
 		return;
 	}
-
+	wpa_msg(hapd->msg_ctx, MSG_INFO, "authenticate after associated2");
 	ap_sta_set_authorized(hapd, sta, 0);
 	sta->last_seq_ctrl = WLAN_INVALID_MGMT_SEQ;
 	sta->flags &= ~(WLAN_STA_ASSOC | WLAN_STA_ASSOC_REQ_OK);
@@ -4350,7 +4350,7 @@ static void handle_deauth(struct hostapd_data *hapd,
 			MAC2STR(mgmt->sa));
 		return;
 	}
-
+	wpa_msg(hapd->msg_ctx, MSG_INFO, "authenticate after associated34");
 	ap_sta_set_authorized(hapd, sta, 0);
 	sta->last_seq_ctrl = WLAN_INVALID_MGMT_SEQ;
 	sta->flags &= ~(WLAN_STA_AUTH | WLAN_STA_ASSOC |

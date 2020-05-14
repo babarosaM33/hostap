@@ -679,7 +679,7 @@ void hostapd_notif_disassoc(struct hostapd_data *hapd, const u8 *addr)
 			   MACSTR, MAC2STR(addr));
 		return;
 	}
-
+	wpa_msg(hapd->msg_ctx, MSG_INFO, "authenticate after associated996");
 	ap_sta_set_authorized(hapd, sta, 0);
 	sta->flags &= ~(WLAN_STA_AUTH | WLAN_STA_ASSOC);
 	wpa_auth_sm_event(sta->wpa_sm, WPA_DISASSOC);
